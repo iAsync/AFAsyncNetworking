@@ -1,12 +1,12 @@
 #import <JFFAsyncOperations/JFFAsyncOperations.h>
 #import <Foundation/Foundation.h>
 
-@class AFURLConnectionOperation;
+@class AFHTTPRequestOperation;
 
 @interface AFURLConnectionOperationAdapter : NSObject< JFFAsyncOperationInterface >
 
--(instancetype)initWithAFURLConnectionOperation:( AFURLConnectionOperation* )afOperation;
+-(instancetype)initWithAFURLConnectionOperation:( AFHTTPRequestOperation* )afOperation;
 
-@property ( nonatomic, readonly ) AFURLConnectionOperation* afOperation;
+@property ( nonatomic, readonly ) AFHTTPRequestOperation* afOperation;
 
 @end
