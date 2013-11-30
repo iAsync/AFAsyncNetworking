@@ -1,7 +1,10 @@
 #import "AFURLConnectionOperationAdapter.h"
 
+
+#import "AFCompletionInfo.h"
 #import "AFAsyncNetworkingBlocks.h"
 #import "AFUrlConnectionProgressInfo.h"
+
 
 @implementation AFURLConnectionOperationAdapter
 {
@@ -30,15 +33,21 @@
 
 #pragma mark -
 #pragma mark JFFAsyncOperationInterface
--(void)initializeWithResultHandler:(JFFAsyncOperationInterfaceResultHandler)handler
-                     cancelHandler:(JFFAsyncOperationInterfaceCancelHandler)cancelHandler
-                   progressHandler:(JFFAsyncOperationInterfaceProgressHandler)progress
+-(void)initializeWithResultHandler:( JFFAsyncOperationInterfaceResultHandler )handler
+                     cancelHandler:( JFFAsyncOperationInterfaceCancelHandler )cancelHandler
+                   progressHandler:( JFFAsyncOperationInterfaceProgressHandler )progress
 {
    self->_cancelBlock = [ cancelHandler copy ];
    
-//   - (void)setUploadProgressBlock:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))block;
+   AFProgressBlock downloadProgress =
+      [ self hookProgressBlock: self->_afOperation.downloadProgress
+          withExternalCallback: progress ];
+   [ self->_afOperation setDownloadProgressBlock: downloadProgress ];
 
-//- (void)setDownloadProgressBlock:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))block;
+   AFProgressBlock uploadProgress =
+      [ self hookProgressBlock: self->_afOperation.uploadProgress
+          withExternalCallback: progress ];
+   [ self->_afOperation setUploadProgressBlock: uploadProgress ];
    
    
    
@@ -47,9 +56,9 @@
 
 }
 
--(void)asyncOperationWithResultHandler:(JFFAsyncOperationInterfaceResultHandler)handler
-                         cancelHandler:(JFFAsyncOperationInterfaceCancelHandler)cancelHandler
-                       progressHandler:(JFFAsyncOperationInterfaceProgressHandler)progress
+-(void)asyncOperationWithResultHandler:( JFFAsyncOperationInterfaceResultHandler )handler
+                         cancelHandler:( JFFAsyncOperationInterfaceCancelHandler )cancelHandler
+                       progressHandler:( JFFAsyncOperationInterfaceProgressHandler )progress
 {
    [ self initializeWithResultHandler: handler
                         cancelHandler: cancelHandler
@@ -58,7 +67,7 @@
    [ self->_afOperation start ];
 }
 
--(void)cancel:(BOOL)canceled
+-(void)cancel:( BOOL )canceled
 {
    if ( canceled )
    {
@@ -74,7 +83,7 @@
 #pragma mark -
 #pragma mark AFBlockHooks
 -(AFProgressBlock)hookProgressBlock:( AFProgressBlock )originalProgress
-               withExternalCallback:(JFFAsyncOperationInterfaceProgressHandler)progress
+               withExternalCallback:( JFFAsyncOperationInterfaceProgressHandler )progress
 {
    originalProgress = [ originalProgress copy ];
    progress = [ progress copy ];
@@ -104,5 +113,31 @@
    return [ result copy ];
 }
 
+-(AFSuccessfulCompletionBlock)hookSuccessfulCompletion:( AFSuccessfulCompletionBlock )originalSuccess
+                                  withExternalCallback:( AFAsyncCompletionCallbackBlock )completion
+{
+   originalSuccess = [ originalSuccess copy ];
+   completion = [ completion copy ];
+   
+   AFSuccessfulCompletionBlock result = ^void(AFHTTPRequestOperation *operation, id responseObject)
+   {
+      if ( nil != originalSuccess )
+      {
+         originalSuccess( operation, responseObject );
+      }
+      
+      if ( nil != completion )
+      {
+         AFCompletionInfo* blockResult = [ AFCompletionInfo new ];
+         {
+            blockResult.operation      = operation     ;
+            blockResult.responseObject = responseObject;
+         }
+         completion( blockResult, nil );
+      }
+   };
+   
+   return [ result copy ];
+}
 
 @end
