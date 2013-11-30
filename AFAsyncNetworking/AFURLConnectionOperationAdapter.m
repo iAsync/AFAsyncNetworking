@@ -1,6 +1,7 @@
 #import "AFURLConnectionOperationAdapter.h"
 
 
+#import "AFAsyncError.h"
 #import "AFCompletionInfo.h"
 #import "AFAsyncNetworkingBlocks.h"
 #import "AFUrlConnectionProgressInfo.h"
@@ -50,10 +51,15 @@
    [ self->_afOperation setUploadProgressBlock: uploadProgress ];
    
    
+   AFSuccessfulCompletionBlock onSuccess =
+      [ self hookSuccessfulCompletion: self->_afOperation.onSuccess
+                 withExternalCallback: handler ];
+   AFUnsuccessfulCompletionBlock onError =
+      [ self hookUnsuccessfulCompletion: self->_afOperation.onError
+                   withExternalCallback: handler ];
    
-//   - (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-//failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-
+   [ self->_afOperation setCompletionBlockWithSuccess: onSuccess
+                                              failure: onError ];
 }
 
 -(void)asyncOperationWithResultHandler:( JFFAsyncOperationInterfaceResultHandler )handler
@@ -134,6 +140,36 @@
             blockResult.responseObject = responseObject;
          }
          completion( blockResult, nil );
+      }
+   };
+   
+   return [ result copy ];
+}
+
+-(AFUnsuccessfulCompletionBlock)hookUnsuccessfulCompletion:( AFUnsuccessfulCompletionBlock )originalFailure
+                                  withExternalCallback:( AFAsyncCompletionCallbackBlock )completion
+{
+   originalFailure = [ originalFailure copy ];
+   completion = [ completion copy ];
+   
+   static NSString* const ERROR_DOMAIN = @"org.iAsync.AFAsyncNetworking";
+   
+   AFUnsuccessfulCompletionBlock result = ^void(AFHTTPRequestOperation *operation, NSError* error)
+   {
+      if ( nil != originalFailure )
+      {
+         originalFailure( operation, error );
+      }
+      
+      if ( nil != completion )
+      {
+         AFAsyncError* blockError = [ [ AFAsyncError alloc ] initWithDomain: ERROR_DOMAIN
+                                                                       code: 1
+                                                                   userInfo: nil ];
+         blockError.errorFromAFNetworking = error;
+         blockError.operation = operation;
+         
+         completion( nil, blockError );
       }
    };
    
