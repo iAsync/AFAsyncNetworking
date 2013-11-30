@@ -11,6 +11,7 @@
 		7E1DDC62184A699400D115BC /* AFUrlConnectionProgressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1DDC61184A699400D115BC /* AFUrlConnectionProgressInfo.m */; };
 		7E1DDC66184A6AD300D115BC /* AFCompletionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1DDC65184A6AD300D115BC /* AFCompletionInfo.m */; };
 		7E1DDC69184A6B6900D115BC /* AFAsyncError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1DDC68184A6B6900D115BC /* AFAsyncError.m */; };
+		7E1DDC6C184A78FA00D115BC /* AFAsyncOperationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1DDC6B184A78FA00D115BC /* AFAsyncOperationFactory.m */; };
 		7E6B89B3184A39CF00C290B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89B2184A39CF00C290B8 /* Foundation.framework */; };
 		7E6B89B8184A39CF00C290B8 /* AFAsyncNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E6B89B7184A39CF00C290B8 /* AFAsyncNetworking.h */; };
 		7E6B89C1184A39CF00C290B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89C0184A39CF00C290B8 /* XCTest.framework */; };
@@ -92,6 +93,8 @@
 		7E1DDC65184A6AD300D115BC /* AFCompletionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFCompletionInfo.m; sourceTree = "<group>"; };
 		7E1DDC67184A6B6900D115BC /* AFAsyncError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAsyncError.h; sourceTree = "<group>"; };
 		7E1DDC68184A6B6900D115BC /* AFAsyncError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAsyncError.m; sourceTree = "<group>"; };
+		7E1DDC6A184A78FA00D115BC /* AFAsyncOperationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAsyncOperationFactory.h; sourceTree = "<group>"; };
+		7E1DDC6B184A78FA00D115BC /* AFAsyncOperationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAsyncOperationFactory.m; sourceTree = "<group>"; };
 		7E6B30E8184A531900C7D59A /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AFNetworking.xcodeproj; path = ../AFNetworking/AFNetworking/AFNetworking/AFNetworking.xcodeproj; sourceTree = "<group>"; };
 		7E6B89AF184A39CF00C290B8 /* libAFAsyncNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFAsyncNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E6B89B2184A39CF00C290B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -192,6 +195,8 @@
 			children = (
 				7E6B89B7184A39CF00C290B8 /* AFAsyncNetworking.h */,
 				7E1DDC63184A69F600D115BC /* AFAsyncNetworkingBlocks.h */,
+				7E1DDC6A184A78FA00D115BC /* AFAsyncOperationFactory.h */,
+				7E1DDC6B184A78FA00D115BC /* AFAsyncOperationFactory.m */,
 				7E1DDC5B184A570300D115BC /* AFURLConnectionOperationAdapter.h */,
 				7E1DDC5C184A570300D115BC /* AFURLConnectionOperationAdapter.m */,
 				7E1DDC60184A699400D115BC /* AFUrlConnectionProgressInfo.h */,
@@ -365,6 +370,7 @@
 				7E1DDC66184A6AD300D115BC /* AFCompletionInfo.m in Sources */,
 				7E1DDC5D184A570300D115BC /* AFURLConnectionOperationAdapter.m in Sources */,
 				7E1DDC62184A699400D115BC /* AFUrlConnectionProgressInfo.m in Sources */,
+				7E1DDC6C184A78FA00D115BC /* AFAsyncOperationFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
