@@ -7,4 +7,8 @@
           AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
               tmpFileNameBlock:( AFTmpFileNameBuilderBlock )tmpFileNameBuilder;
 
+-(instancetype)initWithResumeData:( NSData* )resumeData
+             AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
+                 tmpFileNameBlock:( AFTmpFileNameBuilderBlock )tmpFileNameBuilder;
+
 @end

@@ -9,6 +9,7 @@
 {
    AFTmpFileNameBuilderBlock _tmpFileNameBuilder;
    NSProgress* _downloadProgress;
+   NSData* _resumeData;
 }
 
 -(instancetype)initWithRequest:( NSURLRequest *)request
@@ -27,6 +28,23 @@
    return self;
 }
 
+-(instancetype)initWithResumeData:( NSData* )resumeData
+             AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
+                 tmpFileNameBlock:( AFTmpFileNameBuilderBlock )tmpFileNameBuilder
+{
+   self = [ super initWithRequest: nil
+             AFHTTPSessionManager: sessionManager ];
+   if ( nil == self )
+   {
+      return nil;
+   }
+   
+   self->_tmpFileNameBuilder = [ tmpFileNameBuilder copy ];
+   self->_resumeData = resumeData;
+   
+   return self;
+}
+
 -(NSURLSessionTask*)createTaskWithResultHandler:(JFFAsyncOperationInterfaceResultHandler)handler
                                   cancelHandler:(JFFAsyncOperationInterfaceCancelHandler)cancelHandler
                                 progressHandler:(JFFAsyncOperationInterfaceProgressHandler)progress
@@ -35,13 +53,24 @@
    
    NSProgress* afProgress = nil;
    
-   NSURLSessionTask* result =
-   [ self.sessionManager downloadTaskWithRequest: self.request
-                                        progress: &afProgress
-                                     destination: self->_tmpFileNameBuilder
-                               completionHandler: afCompletion ];
+   NSURLSessionTask* result = nil;
+   if ( nil != self->_resumeData )
+   {
+      result = [ self.sessionManager downloadTaskWithResumeData: self->_resumeData
+                                                       progress: &afProgress
+                                                    destination: self->_tmpFileNameBuilder
+                                              completionHandler: afCompletion ];
+   }
+   else
+   {
+      result = [ self.sessionManager downloadTaskWithRequest: self.request
+                                                    progress: &afProgress
+                                                 destination: self->_tmpFileNameBuilder
+                                           completionHandler: afCompletion ];
+   }
+   
+   
    self->_downloadProgress = afProgress;
-
    [ self observeProgress: afProgress
               notifyBlock: [ progress copy ] ];
    
