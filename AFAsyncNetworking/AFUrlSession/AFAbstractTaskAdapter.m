@@ -1,8 +1,7 @@
 #import "AFAbstractTaskAdapter.h"
 
 
-
-@interface AFAbstractTaskAdapter()<AFAbstractTaskAdapterSubclassing>
+@interface AFAbstractTaskAdapter()<AFAbstractTaskAdapterSubclassing, AFTaskWithProgress>
 @end
 
 
@@ -15,6 +14,9 @@
 -(instancetype)initWithRequest:( NSURLRequest *)request
           AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
 {
+   NSParameterAssert( nil != request        );
+   NSParameterAssert( nil != sessionManager );
+   
    self = [ super init ];
    if ( nil == self )
    {
@@ -63,6 +65,12 @@
 {
    [ self doesNotRecognizeSelector: _cmd ];
    return nil;
+}
+
+-(void)observeProgress:( NSProgress* )afProgress
+           notifyBlock:( JFFAsyncOperationInterfaceProgressHandler )progressBlock
+{
+   [ self doesNotRecognizeSelector: _cmd ];
 }
 
 @end

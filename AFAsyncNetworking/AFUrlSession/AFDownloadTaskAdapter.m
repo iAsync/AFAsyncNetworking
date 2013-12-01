@@ -12,10 +12,26 @@
    NSData* _resumeData;
 }
 
+-(instancetype)init
+{
+   [ self doesNotRecognizeSelector: _cmd ];
+   return nil;
+}
+
+-(instancetype)initWithRequest:( NSURLRequest *)request
+          AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
+{
+   [ self doesNotRecognizeSelector: _cmd ];
+   return nil;
+}
+
 -(instancetype)initWithRequest:( NSURLRequest *)request
           AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
               tmpFileNameBlock:( AFTmpFileNameBuilderBlock )tmpFileNameBuilder
 {
+   NSParameterAssert( nil != request        );
+   NSParameterAssert( nil != sessionManager );
+   
    self = [ super initWithRequest: request
              AFHTTPSessionManager: sessionManager ];
    if ( nil == self )
@@ -71,14 +87,14 @@
    
    
    self->_downloadProgress = afProgress;
-   [ self observeProgress: afProgress
-              notifyBlock: [ progress copy ] ];
+//   [ self observeProgress: afProgress
+//              notifyBlock: [ progress copy ] ];
    
    return result;
 }
 
 -(void)observeProgress:( NSProgress* )afProgress
-           notifyBlock:(JFFAsyncOperationInterfaceProgressHandler)progressBlock
+           notifyBlock:( JFFAsyncOperationInterfaceProgressHandler )progressBlock
 {
    NSAssert( NO, @"not implemented" );
 }
