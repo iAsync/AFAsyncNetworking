@@ -8,8 +8,6 @@
 
 @implementation AFDataTaskAdapter
 
-
-
 -(NSURLSessionTask*)createTaskWithResultHandler:(JFFAsyncOperationInterfaceResultHandler)handler
                                   cancelHandler:(JFFAsyncOperationInterfaceCancelHandler)cancelHandler
                                 progressHandler:(JFFAsyncOperationInterfaceProgressHandler)progress
