@@ -27,6 +27,7 @@
 		7E6B89C7184A39CF00C290B8 /* libAFAsyncNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89AF184A39CF00C290B8 /* libAFAsyncNetworking.a */; };
 		7E6B89CD184A39CF00C290B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E6B89CB184A39CF00C290B8 /* InfoPlist.strings */; };
 		7E6B89CF184A39CF00C290B8 /* AFAsyncNetworkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B89CE184A39CF00C290B8 /* AFAsyncNetworkingTests.m */; };
+		7E81BBDC184BB6B90002470A /* AFUploadTaskAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E81BBDB184BB6B90002470A /* AFUploadTaskAdapter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,9 @@
 		7E6B89CA184A39CF00C290B8 /* AFAsyncNetworkingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AFAsyncNetworkingTests-Info.plist"; sourceTree = "<group>"; };
 		7E6B89CC184A39CF00C290B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E6B89CE184A39CF00C290B8 /* AFAsyncNetworkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFAsyncNetworkingTests.m; sourceTree = "<group>"; };
+		7E81BBDA184BB6B90002470A /* AFUploadTaskAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFUploadTaskAdapter.h; sourceTree = "<group>"; };
+		7E81BBDB184BB6B90002470A /* AFUploadTaskAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFUploadTaskAdapter.m; sourceTree = "<group>"; };
+		7E81BBE2184BB9DB0002470A /* AFTaskWithProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFTaskWithProgress.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,7 @@
 		7E4E470C184B3DB1009CD7AD /* AFUrlSession */ = {
 			isa = PBXGroup;
 			children = (
+				7E81BBE2184BB9DB0002470A /* AFTaskWithProgress.h */,
 				7E4E4711184B3FA4009CD7AD /* AFAbstractTaskAdapterSubclassing.h */,
 				7E4E470D184B3DCE009CD7AD /* AFAbstractTaskAdapter.h */,
 				7E4E470E184B3DCE009CD7AD /* AFAbstractTaskAdapter.m */,
@@ -208,6 +213,8 @@
 				7E4E4713184B425B009CD7AD /* AFDataTaskAdapter.m */,
 				7E4E471E184B4A13009CD7AD /* AFDownloadTaskAdapter.h */,
 				7E4E471F184B4A13009CD7AD /* AFDownloadTaskAdapter.m */,
+				7E81BBDA184BB6B90002470A /* AFUploadTaskAdapter.h */,
+				7E81BBDB184BB6B90002470A /* AFUploadTaskAdapter.m */,
 				7E4E4721184B4F87009CD7AD /* AFSessionCallbackBuilder.h */,
 				7E4E4722184B4F87009CD7AD /* AFSessionCallbackBuilder.m */,
 			);
@@ -435,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E81BBDC184BB6B90002470A /* AFUploadTaskAdapter.m in Sources */,
 				7E4E4723184B4F87009CD7AD /* AFSessionCallbackBuilder.m in Sources */,
 				7E4E470B184B3D40009CD7AD /* AFURLConnectionOperationAdapter.m in Sources */,
 				7E4E4707184B3CC5009CD7AD /* AFUrlConnectionProgressInfo.m in Sources */,
