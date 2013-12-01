@@ -1,7 +1,10 @@
 
 #ifdef __OBJC__
+   #import "AFAsyncErrorConstants.h"
+   #import "AFAbstractTaskAdapterSubclassing.h"
    #import "AFNetworkingBlocks.h"
-   #import <AFNetworking/AFNetworking.h>
 
+   #import <JFFAsyncOperations/JFFAsyncOperations.h>
+   #import <AFNetworking/AFNetworking.h>
    #import <Foundation/Foundation.h>
 #endif

@@ -1,6 +1,6 @@
 #import "AFAbstractTaskAdapter.h"
 
-#import "AFAbstractTaskAdapterSubclassing.h"
+
 
 @interface AFAbstractTaskAdapter()<AFAbstractTaskAdapterSubclassing>
 @end
@@ -12,7 +12,8 @@
 }
 
 
--(instancetype)initWithAFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
+-(instancetype)initWithRequest:( NSURLRequest *)request
+          AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager
 {
    self = [ super init ];
    if ( nil == self )
@@ -21,6 +22,7 @@
    }
    
    self->_sessionManager = sessionManager;
+   self->_request        = request       ;
    
    return self;
 }

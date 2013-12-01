@@ -3,8 +3,10 @@
 
 @interface AFAbstractTaskAdapter : NSObject< JFFAsyncOperationInterface >
 
--(instancetype)initWithAFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager;
+-(instancetype)initWithRequest:( NSURLRequest *)request
+          AFHTTPSessionManager:( AFHTTPSessionManager* )sessionManager;
 
+@property ( nonatomic, readonly ) NSURLRequest        * request       ;
 @property ( nonatomic, readonly ) AFHTTPSessionManager* sessionManager;
 @property ( nonatomic, readonly ) NSURLSessionTask    * task          ;
 

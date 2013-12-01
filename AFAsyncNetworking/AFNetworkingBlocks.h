@@ -11,4 +11,7 @@ typedef void (^AFSuccessfulCompletionBlock)(AFHTTPRequestOperation *operation, i
 
 typedef void (^AFUnsuccessfulCompletionBlock)(AFHTTPRequestOperation *operation, NSError *error);
 
+
+typedef void (^AFDataTaskCompletionBlock)(NSURLResponse *response, id responseObject, NSError *error);
+
 #endif

@@ -152,7 +152,6 @@
    originalFailure = [ originalFailure copy ];
    completion = [ completion copy ];
    
-   static NSString* const ERROR_DOMAIN = @"org.iAsync.AFAsyncNetworking";
    
    AFUnsuccessfulCompletionBlock result = ^void(AFHTTPRequestOperation *operation, NSError* error)
    {
@@ -163,7 +162,8 @@
       
       if ( nil != completion )
       {
-         AFAsyncError* blockError = [ [ AFAsyncError alloc ] initWithDomain: ERROR_DOMAIN
+         NSString* domain = [ AFAsyncErrorConstants urlConnectionErrorDomain ];
+         AFAsyncError* blockError = [ [ AFAsyncError alloc ] initWithDomain: domain
                                                                        code: 1
                                                                    userInfo: nil ];
          blockError.errorFromAFNetworking = error;
