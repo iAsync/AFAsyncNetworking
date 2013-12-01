@@ -5,8 +5,8 @@
 
 @protocol AFAbstractTaskAdapterSubclassing <NSObject>
 
--(NSURLSessionTask*)createTaskWithResultHandler:(JFFAsyncOperationInterfaceResultHandler)handler
-                         cancelHandler:(JFFAsyncOperationInterfaceCancelHandler)cancelHandler
-                                progressHandler:(JFFAsyncOperationInterfaceProgressHandler)progress;
+-(NSURLSessionTask*)createTaskWithResultHandler:( JFFAsyncOperationInterfaceResultHandler   )handler
+                                  cancelHandler:( JFFAsyncOperationInterfaceCancelHandler   )cancelHandler
+                                progressHandler:( JFFAsyncOperationInterfaceProgressHandler )progress;
 
 @end
