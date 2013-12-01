@@ -17,6 +17,8 @@
 		7E4E4717184B4407009CD7AD /* AFDataTaskCompletionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E4716184B4407009CD7AD /* AFDataTaskCompletionInfo.m */; };
 		7E4E471A184B44DD009CD7AD /* AFDataTaskError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E4719184B44DD009CD7AD /* AFDataTaskError.m */; };
 		7E4E471D184B4569009CD7AD /* AFAsyncErrorConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E471C184B4569009CD7AD /* AFAsyncErrorConstants.m */; };
+		7E4E4720184B4A13009CD7AD /* AFDownloadTaskAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E471F184B4A13009CD7AD /* AFDownloadTaskAdapter.m */; };
+		7E4E4723184B4F87009CD7AD /* AFSessionCallbackBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E4722184B4F87009CD7AD /* AFSessionCallbackBuilder.m */; };
 		7E6B89B3184A39CF00C290B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89B2184A39CF00C290B8 /* Foundation.framework */; };
 		7E6B89B8184A39CF00C290B8 /* AFAsyncNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E6B89B7184A39CF00C290B8 /* AFAsyncNetworking.h */; };
 		7E6B89C1184A39CF00C290B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89C0184A39CF00C290B8 /* XCTest.framework */; };
@@ -111,6 +113,10 @@
 		7E4E4719184B44DD009CD7AD /* AFDataTaskError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDataTaskError.m; sourceTree = "<group>"; };
 		7E4E471B184B4569009CD7AD /* AFAsyncErrorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAsyncErrorConstants.h; sourceTree = "<group>"; };
 		7E4E471C184B4569009CD7AD /* AFAsyncErrorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAsyncErrorConstants.m; sourceTree = "<group>"; };
+		7E4E471E184B4A13009CD7AD /* AFDownloadTaskAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadTaskAdapter.h; sourceTree = "<group>"; };
+		7E4E471F184B4A13009CD7AD /* AFDownloadTaskAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadTaskAdapter.m; sourceTree = "<group>"; };
+		7E4E4721184B4F87009CD7AD /* AFSessionCallbackBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSessionCallbackBuilder.h; sourceTree = "<group>"; };
+		7E4E4722184B4F87009CD7AD /* AFSessionCallbackBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSessionCallbackBuilder.m; sourceTree = "<group>"; };
 		7E6B30E8184A531900C7D59A /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AFNetworking.xcodeproj; path = ../AFNetworking/AFNetworking/AFNetworking/AFNetworking.xcodeproj; sourceTree = "<group>"; };
 		7E6B89AF184A39CF00C290B8 /* libAFAsyncNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFAsyncNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E6B89B2184A39CF00C290B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -200,6 +206,10 @@
 				7E4E470E184B3DCE009CD7AD /* AFAbstractTaskAdapter.m */,
 				7E4E4712184B425B009CD7AD /* AFDataTaskAdapter.h */,
 				7E4E4713184B425B009CD7AD /* AFDataTaskAdapter.m */,
+				7E4E471E184B4A13009CD7AD /* AFDownloadTaskAdapter.h */,
+				7E4E471F184B4A13009CD7AD /* AFDownloadTaskAdapter.m */,
+				7E4E4721184B4F87009CD7AD /* AFSessionCallbackBuilder.h */,
+				7E4E4722184B4F87009CD7AD /* AFSessionCallbackBuilder.m */,
 			);
 			path = AFUrlSession;
 			sourceTree = "<group>";
@@ -425,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E4E4723184B4F87009CD7AD /* AFSessionCallbackBuilder.m in Sources */,
 				7E4E470B184B3D40009CD7AD /* AFURLConnectionOperationAdapter.m in Sources */,
 				7E4E4707184B3CC5009CD7AD /* AFUrlConnectionProgressInfo.m in Sources */,
 				7E4E4706184B3CC5009CD7AD /* AFCompletionInfo.m in Sources */,
@@ -434,6 +445,7 @@
 				7E4E471D184B4569009CD7AD /* AFAsyncErrorConstants.m in Sources */,
 				7E1DDC6C184A78FA00D115BC /* AFAsyncOperationFactory.m in Sources */,
 				7E4E4717184B4407009CD7AD /* AFDataTaskCompletionInfo.m in Sources */,
+				7E4E4720184B4A13009CD7AD /* AFDownloadTaskAdapter.m in Sources */,
 				7E4E471A184B44DD009CD7AD /* AFDataTaskError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

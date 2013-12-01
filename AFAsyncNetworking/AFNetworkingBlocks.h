@@ -14,4 +14,6 @@ typedef void (^AFUnsuccessfulCompletionBlock)(AFHTTPRequestOperation *operation,
 
 typedef void (^AFDataTaskCompletionBlock)(NSURLResponse *response, id responseObject, NSError *error);
 
+typedef NSURL* (^AFTmpFileNameBuilderBlock)(NSURL *targetPath, NSURLResponse *response);
+
 #endif
