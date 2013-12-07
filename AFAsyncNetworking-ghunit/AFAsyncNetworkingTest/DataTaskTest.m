@@ -31,8 +31,6 @@
    self->_mainQueue = [ NSOperationQueue mainQueue ];
    
    self->_afSessionManager = [ AFHTTPSessionManager manager ];
-   self->_afSessionManager.responseSerializer = [ AFHTTPResponseSerializer serializer ];
-   
 }
 
 -(void)tearDown
@@ -49,6 +47,7 @@
 
 -(void)testReadmeIsDownloadedCorrectly
 {
+   self->_afSessionManager.responseSerializer = [ AFHTTPResponseSerializer serializer ];
    __block AFDataTaskCompletionInfo* received = nil;
    
    __block NSData* receivedReadme = nil;
@@ -80,6 +79,42 @@
    GHAssertTrue( [receivedReadme isKindOfClass: [ NSData class ] ], @"response object class mismatch" );
    
    GHAssertTrue( [ self->_expectedReadme isEqualToData: receivedReadme ], @"downloaded content mismatch" );
+}
+
+-(void)testDownloadErrorIsWrapped
+{
+   __block AFDataTaskCompletionInfo* received = nil;
+   __block NSError* error = nil;
+   
+   SEL testMethod = _cmd;
+   [ self prepare: testMethod ];
+   
+   JFFDidFinishAsyncOperationHandler completionBlock = ^void( AFDataTaskCompletionInfo* blockResult, NSError* blockError )
+   {
+      error = blockError;
+      received = blockResult;
+      
+      [ self notify: kGHUnitWaitStatusSuccess
+        forSelector: testMethod ];
+   };
+   
+   JFFAsyncOperation loader =
+   [ AFAsyncOperationFactory asyncDataTaskOperationFromRequest: self->_request
+                                                    andSession: self->_afSessionManager ];
+   loader( nil, nil, completionBlock );
+   
+   
+   [ self waitForStatus: kGHUnitWaitStatusSuccess
+                timeout: 1000 ];
+   GHAssertNil( received, @"unexpecred response" );
+   GHAssertNotNil( error, @"error expected" );
+   
+
+   GHAssertTrue( [ error isMemberOfClass: [ AFDataTaskError class ] ], @"error class mismatch" );
+
+   
+   AFDataTaskError* castedError = (AFDataTaskError*)error;
+   GHAssertNotNil( castedError.errorFromAFNetworking, @"underlying error mismatch" );
 }
 
 @end
