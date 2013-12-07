@@ -20,7 +20,6 @@
 		7E4E4720184B4A13009CD7AD /* AFDownloadTaskAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E471F184B4A13009CD7AD /* AFDownloadTaskAdapter.m */; };
 		7E4E4723184B4F87009CD7AD /* AFSessionCallbackBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4E4722184B4F87009CD7AD /* AFSessionCallbackBuilder.m */; };
 		7E6B89B3184A39CF00C290B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89B2184A39CF00C290B8 /* Foundation.framework */; };
-		7E6B89B8184A39CF00C290B8 /* AFAsyncNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E6B89B7184A39CF00C290B8 /* AFAsyncNetworking.h */; };
 		7E6B89C1184A39CF00C290B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89C0184A39CF00C290B8 /* XCTest.framework */; };
 		7E6B89C2184A39CF00C290B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89B2184A39CF00C290B8 /* Foundation.framework */; };
 		7E6B89C4184A39CF00C290B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6B89C3184A39CF00C290B8 /* UIKit.framework */; };
@@ -82,7 +81,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				7E6B89B8184A39CF00C290B8 /* AFAsyncNetworking.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
