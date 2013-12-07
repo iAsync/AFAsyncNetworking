@@ -1,5 +1,7 @@
 
 #import <AFAsyncNetworking/AFAsyncOperationFactory.h>
-#import <AFAsyncNetworking/AFUrlConnectionProgressInfo.h>
-#import <AFAsyncNetworking/AFCompletionInfo.h>
-#import <AFAsyncNetworking/AFAsyncError.h>
+
+#import <AFAsyncNetworking/ResponseStructures/AFDataTaskCompletionInfo.h>
+#import <AFAsyncNetworking/ResponseStructures/AFUrlConnectionProgressInfo.h>
+#import <AFAsyncNetworking/ResponseStructures/AFCompletionInfo.h>
+#import <AFAsyncNetworking/Error/AFAsyncError.h>
