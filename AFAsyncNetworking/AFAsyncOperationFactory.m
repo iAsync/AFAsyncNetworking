@@ -15,6 +15,8 @@
 #pragma mark NSUrlConnection based
 +(JFFAsyncOperation)asyncOperationFromAFHTTPRequestOperation:( AFHTTPRequestOperation* )afOperation
 {
+   NSParameterAssert( nil != afOperation );
+   
    JFFAsyncOperationInstanceBuilder factory = ^id<JFFAsyncOperationInterface>
    {
       AFURLConnectionOperationAdapter* result = [ [ AFURLConnectionOperationAdapter alloc ] initWithAFURLConnectionOperation: afOperation ];
@@ -30,6 +32,9 @@
 +(JFFAsyncOperation)asyncDataTaskOperationFromRequest:( NSURLRequest*) request
                                            andSession:( AFHTTPSessionManager* )sessionManager
 {
+   NSParameterAssert( nil != request );
+   NSParameterAssert( nil != sessionManager );
+   
    JFFAsyncOperationInstanceBuilder factory = ^id<JFFAsyncOperationInterface>
    {
       AFDataTaskAdapter* adapter =
@@ -49,6 +54,10 @@
                                       andSession:( AFHTTPSessionManager* )sessionManager
                    usingOptionalTmpFileNameBlock:( AFTmpFileNameBuilderBlock )tmpFileNameBuilder
 {
+   NSParameterAssert( nil != request );
+   NSParameterAssert( nil != sessionManager );
+   NSParameterAssert( nil != tmpFileNameBuilder );
+   
    tmpFileNameBuilder = [ tmpFileNameBuilder copy ];
    
    JFFAsyncOperationInstanceBuilder factory = ^id<JFFAsyncOperationInterface>
@@ -67,6 +76,10 @@
                                          andSession:( AFHTTPSessionManager* )sessionManager
                       usingOptionalTmpFileNameBlock:( AFTmpFileNameBuilderBlock )tmpFileNameBuilder
 {
+   NSParameterAssert( nil != resumeData );
+   NSParameterAssert( nil != sessionManager );
+   NSParameterAssert( nil != tmpFileNameBuilder );
+   
    tmpFileNameBuilder = [ tmpFileNameBuilder copy ];
    
    JFFAsyncOperationInstanceBuilder factory = ^id<JFFAsyncOperationInterface>
@@ -89,6 +102,10 @@
                                              request:( NSURLRequest* )request
                                              session:( AFHTTPSessionManager* )sessionManager
 {
+   NSParameterAssert( nil != urlOfFileWithUploadData );
+   NSParameterAssert( nil != request );
+   NSParameterAssert( nil != sessionManager );
+   
    JFFAsyncOperationInstanceBuilder factory = ^id<JFFAsyncOperationInterface>
    {
 
@@ -107,6 +124,11 @@
                                              request:( NSURLRequest* )request
                                              session:( AFHTTPSessionManager* )sessionManager
 {
+   NSParameterAssert( nil != uploadData );
+   NSParameterAssert( nil != request );
+   NSParameterAssert( nil != sessionManager );
+
+   
    JFFAsyncOperationInstanceBuilder factory = ^id<JFFAsyncOperationInterface>
    {
       
@@ -124,6 +146,10 @@
 +(JFFAsyncOperation)asyncUploadTaskOperationWithStreamedRequest:( NSURLRequest* )request
                                                         session:( AFHTTPSessionManager* )sessionManager
 {
+   NSParameterAssert( nil != request );
+   NSParameterAssert( nil != sessionManager );
+
+   
    JFFAsyncOperationInstanceBuilder factory = ^id<JFFAsyncOperationInterface>
    {
       
