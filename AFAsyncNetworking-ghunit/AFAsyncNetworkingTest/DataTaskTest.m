@@ -1,5 +1,4 @@
 @interface DataTaskTest : GHAsyncTestCase
-
 @end
 
 @implementation DataTaskTest
