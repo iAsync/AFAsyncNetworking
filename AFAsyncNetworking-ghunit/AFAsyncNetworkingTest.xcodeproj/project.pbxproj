@@ -818,7 +818,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/dodikk/projects/iAsync/AFAsyncNetworking/AFAsyncNetworking-ghunit",
+					.,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFAsyncNetworkingTest/AFAsyncNetworkingTest-Prefix.pch";
@@ -835,7 +835,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/dodikk/projects/iAsync/AFAsyncNetworking/AFAsyncNetworking-ghunit",
+					.,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFAsyncNetworkingTest/AFAsyncNetworkingTest-Prefix.pch";
