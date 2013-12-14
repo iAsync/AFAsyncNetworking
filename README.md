@@ -159,3 +159,4 @@ See the example below :
 2. iAsync home page                 - <https://github.com/EmbeddedSources/iAsync>
 3. Code examples repository         - <https://github.com/iAsync/weather-afasync>
 4. Callback hell problem definition - <http://tirania.org/blog/archive/2013/Aug-15.html>
+5. Slides about iAsync library and functional programming in Objective-C - <https://github.com/iAsync/iAsyncSlides/blob/master/iAsync-slides.pdf?raw=true>
